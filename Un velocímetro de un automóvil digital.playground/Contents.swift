@@ -17,24 +17,31 @@ class Auto {
     var velocidad: Velocidades
     
     init() {
+        velocidad = .Apagado
         velocidad = Velocidades(velocidadInicial: .Apagado)
     }
     
     func cambioDeVelocidad() -> (actual: Int, velocidadEnCadena: String) {
+        // FIXME: Hay que empezar imprimiendo Apagado
+        let actual = velocidad.rawValue
+        var cadena: String
+        
         switch velocidad {
         case .Apagado:
-                velocidad = Velocidades.VelocidadBaja
-                return (velocidad.rawValue, "VelocidadBaja")
+            velocidad = Velocidades.VelocidadBaja
+            cadena = "Apagado"
         case .VelocidadBaja:
             velocidad = Velocidades.VelocidadMedia
-            return (velocidad.rawValue, "VelocidadMedia")
+            cadena = "Velocidad baja"
         case .VelocidadMedia:
             velocidad = Velocidades.VelocidadAlta
-            return (velocidad.rawValue, "VelocidadAlta")
+            cadena = "Velocidad media"
         case .VelocidadAlta:
             velocidad = Velocidades.VelocidadMedia
-            return (velocidad.rawValue, "VelocidadMedia")
+            cadena = "Velocidad alta"
         }
+        
+        return (actual, cadena)
     }
 }
 
